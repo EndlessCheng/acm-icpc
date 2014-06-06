@@ -56,51 +56,51 @@ int n, len, tot;
 int one_pos[N], sumpos_1_r[N];
 bool good(int one_can_have)
 {
- int mid = (one_can_have + 1) >> 1, ans;
- if (one_can_have & 1)
- {
-  REPP(i, 1, tot - one_can_have + 1)
-  {
-   ans = (sumpos_1_r[i + one_can_have - 1] - sumpos_1_r[i + mid - 1])
-      - (sumpos_1_r[i + mid - 2] - sumpos_1_r[i - 1]);
-   if (ans - mid * (mid - 1) <= n) return true;
-  }
- }
- else
- {
-  REPP(i, 1, tot - one_can_have + 1)
-  {
-   ans = (sumpos_1_r[i + one_can_have - 1] - sumpos_1_r[i + mid - 1])
-      - (sumpos_1_r[i + mid - 1] - sumpos_1_r[i - 1]);
-   if (ans - mid * mid <= n) return true;
-  }
- }
- return false;
+	int mid = (one_can_have + 1) >> 1, ans;
+	if (one_can_have & 1)
+	{
+		REPP(i, 1, tot - one_can_have + 1)
+		{
+			ans = (sumpos_1_r[i + one_can_have - 1] - sumpos_1_r[i + mid - 1])
+				  - (sumpos_1_r[i + mid - 2] - sumpos_1_r[i - 1]);
+			if (ans - mid * (mid - 1) <= n) return true;
+		}
+	}
+	else
+	{
+		REPP(i, 1, tot - one_can_have + 1)
+		{
+			ans = (sumpos_1_r[i + one_can_have - 1] - sumpos_1_r[i + mid - 1])
+				  - (sumpos_1_r[i + mid - 1] - sumpos_1_r[i - 1]);
+			if (ans - mid * mid <= n) return true;
+		}
+	}
+	return false;
 }
 int main()
 {
- int t, one_can_have, y, z, ca = 1;
- RI(t);
- while (t--)
- {
-  RS(s);
-  RI(n);
-  len = SL(s), tot = 0;
-  REP(i, len) if (s[i] == '1') one_pos[++tot] = i;
-  REPP(i, 1, tot) sumpos_1_r[i] = sumpos_1_r[i - 1] + one_pos[i];
-        REPP(i, 1, tot) PI(sumpos_1_r[i]);
-        if (tot == 0)
-        {
-            PI(0);
-            continue;
-        }
-        int l = -1, r = tot + 1;
-        while (l + 1 < r)
-        {
-            int mid = (l + r) >> 1;
-            good(mid) ? l = mid : r = mid;
-        }
-        PI(l);
-    }
- return 0;
+	int t, one_can_have, y, z, ca = 1;
+	RI(t);
+	while (t--)
+	{
+		RS(s);
+		RI(n);
+		len = SL(s), tot = 0;
+		REP(i, len) if (s[i] == '1') one_pos[++tot] = i;
+		REPP(i, 1, tot) sumpos_1_r[i] = sumpos_1_r[i - 1] + one_pos[i];
+		REPP(i, 1, tot) PI(sumpos_1_r[i]);
+		if (tot == 0)
+		{
+			PI(0);
+			continue;
+		}
+		int l = -1, r = tot + 1;
+		while (l + 1 < r)
+		{
+			int mid = (l + r) >> 1;
+			good(mid) ? l = mid : r = mid;
+		}
+		PI(l);
+	}
+	return 0;
 }
