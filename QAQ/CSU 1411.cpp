@@ -51,9 +51,11 @@
 #define MOD 1000000007
 #define N 111111
 using namespace std;
+
 char s[N];
 int n, len, tot;
 int one_pos[N], sumpos_1_r[N];
+
 bool good(int one_can_have)
 {
 	int mid = (one_can_have + 1) >> 1, ans;
@@ -77,6 +79,7 @@ bool good(int one_can_have)
 	}
 	return false;
 }
+
 int main()
 {
 	int t, one_can_have, y, z, ca = 1;
