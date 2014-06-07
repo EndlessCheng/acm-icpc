@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -138,7 +139,12 @@ struct Point
 	double x, y;
 	Point(double x = 0, double y = 0): x(x), y(y) {}
 	void read() {SDD(x, y);}
-} p[mx];
+	bool operator < (const Point &b) const
+    {
+        return x < b.x || x == b.x && y < b.y;
+        //return x + eps < b.x || fabs(x - b.x) < eps && y + eps < b.y;
+    }
+} p[mx], ans[mx];
 typedef pair<double, pair<Point, Point> > p3;
 #define MT(a, b, c) make_pair(a, make_pair(b, c))
 typedef Point Vec;
@@ -185,7 +191,7 @@ struct CC
 } ci;
 
 /// 直线与圆的交点ans
-void getLineCCIntersection(Point &p, Point &p2, CC &C, vector<p3> &ans)
+void getLineCCIntersection(Point &p, Point &p2, CC &C, vector<p3> &crossp)
 {
 	Line L(p, p2 - p);
 	double a = L.v.x, b = L.p.x - C.c.x, c = L.v.y, d = L.p.y - C.c.y;
@@ -194,9 +200,9 @@ void getLineCCIntersection(Point &p, Point &p2, CC &C, vector<p3> &ans)
 	/// 相交
 	delta = sqrt(delta);
 	double t1 = (-f - delta) / (2 * e);
-	ans.push_back(MT(PolarAngle(L.point(t1)),p,p2));
+	crossp.push_back(MT(PolarAngle(L.point(t1)), p, p2));
 	double t2 = (-f + delta) / (2 * e);
-	ans.push_back(MT(PolarAngle(L.point(t2)),p,p2));
+	crossp.push_back(MT(PolarAngle(L.point(t2)), p, p2));
 }
 
 double maxA;
@@ -205,7 +211,7 @@ double maxA;
 double maxAngle(CC &ci, Point &p1, Point &p2, double l, double r)
 {
 	double tmp, m1, m2;
-	double a1,a2;
+	double a1, a2;
 	int i;
 	Point cp1, cp2;
 	For(i, 200) /// ?
@@ -214,9 +220,9 @@ double maxAngle(CC &ci, Point &p1, Point &p2, double l, double r)
 		m1 = l + tmp;
 		m2 = r - tmp;
 		cp1 = ci.point(m1), cp2 = ci.point(m2);
-		a1=Angle(p1 - cp1, p2 - cp1);
-		a2=Angle(p1 - cp2, p2 - cp2);
-		maxA=max(maxA,max(a1,a2));
+		a1 = Angle(p1 - cp1, p2 - cp1);
+		a2 = Angle(p1 - cp2, p2 - cp2);
+		maxA = max(maxA, max(a1, a2));
 		a1 + eps < a2 ? l = m1 : r = m2; /// 求极大值
 	}
 	l = Angle(p1 - cp1, p2 - cp1);
@@ -226,38 +232,62 @@ double maxAngle(CC &ci, Point &p1, Point &p2, double l, double r)
 	return l;
 }
 
-vector<p3> ans;
+vector<p3> crossp;
 bool cmp(p3 a, p3 b)
 {
 	return a.first < b.first;
+}
+
+int convex_hull(Point *p, int n)
+{
+	sort(p, p + n);
+//unique(p, p + n); /// *去重，看题意
+	int cnt = 0, i;
+	For(i, n) ///构建一个下凸包，从0到n-1
+	{
+		while (cnt >= 2 && Cross(ans[cnt - 1] - ans[cnt - 2], p[i] - ans[cnt - 2]) < eps)
+			--cnt;
+		ans[cnt++] = p[i];
+	}
+///注意在构建上凸包的过程中我们用到了n-1这个点
+///为什么0要算两次？因为我们要借助它来删去那些在凸包内的点
+	int tmp = cnt;
+	rFor(i, n - 2) ///构建一个上凸包，从n-2到0
+	{
+		while (cnt > tmp && Cross(ans[cnt - 1] - ans[cnt - 2], p[i] - ans[cnt - 2]) < eps)
+			--cnt;
+		ans[cnt++] = p[i];
+	}
+	--cnt; ///0算了两次
+	ans[cnt] = ans[0]; /// *方便后续操作
+	return cnt;
 }
 
 int main()
 {
 //Fin("in.txt");
 	int n, r, i;
-
 	while (~SII(n, r))
 	{
 		ci = CC(Point(0, 0), r); /// 根据这个优化一下
 		For(i, n) p[i].read();
-		p[n] = p[0];
-		ans.clear();
-		For(i, n) getLineCCIntersection(p[i], p[i + 1], ci, ans);
-		//SUni(ans);
-		sort(all(ans), cmp);
+		n = convex_hull(p, n);
+		//p[n] = p[0];
+		crossp.clear();
+		For(i, n) getLineCCIntersection(ans[i], ans[i + 1], ci, crossp);
+		//SUni(crossp);
+		sort(all(crossp), cmp);
 #define x first
 #define y second
-		ans.PB(MP(ans[0].x + 2 * pi, ans[0].y));
+		crossp.PB(MP(crossp[0].x + 2 * pi, crossp[0].y));
 		maxA = 0.0;
-
-		For(i, ans.size() - 1)
+		For(i, crossp.size() - 1)
 		{
-		    maxA = max(maxA, maxAngle(ci, ans[i].y.x, ans[i + 1].y.x, 1e-2, 2*pi+1e-2));
-			maxA = max(maxA, maxAngle(ci, ans[i].y.x, ans[i + 1].y.x, ans[i].x-1e-2, ans[i + 1].x+1e-2)); /// 4个优化成2个？
-			maxA = max(maxA, maxAngle(ci, ans[i].y.x, ans[i + 1].y.y, ans[i].x-1e-2, ans[i + 1].x+1e-2));
-			maxA = max(maxA, maxAngle(ci, ans[i].y.y, ans[i + 1].y.x, ans[i].x-1e-2, ans[i + 1].x+1e-2));
-			maxA = max(maxA, maxAngle(ci, ans[i].y.y, ans[i + 1].y.y, ans[i].x-1e-2, ans[i + 1].x+1e-2));
+			// maxA = max(maxA, maxAngle(ci, crossp[i].y.x, crossp[i + 1].y.x, 1e-2, 2*pi+1e-2));
+			maxA = max(maxA, maxAngle(ci, crossp[i].y.x, crossp[i + 1].y.x, crossp[i].x - 1e-2, crossp[i + 1].x + 1e-2)); /// 4个优化成2个？
+			maxA = max(maxA, maxAngle(ci, crossp[i].y.x, crossp[i + 1].y.y, crossp[i].x - 1e-2, crossp[i + 1].x + 1e-2));
+			maxA = max(maxA, maxAngle(ci, crossp[i].y.y, crossp[i + 1].y.x, crossp[i].x - 1e-2, crossp[i + 1].x + 1e-2));
+			maxA = max(maxA, maxAngle(ci, crossp[i].y.y, crossp[i + 1].y.y, crossp[i].x - 1e-2, crossp[i + 1].x + 1e-2));
 		}
 		PD(maxA);
 	}
