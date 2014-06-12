@@ -176,7 +176,6 @@ int main()
 	{
 		SS(s2);
 		PI(solve());
-		mem(s1, 0), mem(s2, 0);
 	}
 	return 0;
 }
