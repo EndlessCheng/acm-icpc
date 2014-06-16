@@ -38,7 +38,7 @@ void dfs(int x, int k, string s)
 }
 
 int main()
-{
+{ 
 	makeEdge();
 	dfs(1, 0, "");
 	return 0;
