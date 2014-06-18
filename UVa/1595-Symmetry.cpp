@@ -120,39 +120,12 @@ using namespace std;
 #define Fpos(a, n, x) (find(a, a + (n), x) - (a))
 #define Fd(a, x) (find(all(a), x) != a.end())
 
-const int inf = 0x3f3f3f3f; /// 1.06e9 (INT_MAX为2.147e9)
-const long long llinf = 0x3f3f3f3f3f3f3f3fLL; /// 4.56e18 (LLONG_MAX为9.22e18)
-const double pi = acos(-1.0);
-//const double tens[11] = {0.0, 1e-1, 1e-2, 1e-3, 1e-4, 1e-5, 1e-6, 1e-7, 1e-8, 1e-9, 1e-10};
-//double fgcd(double a, double b) {return fabs(b) > eps ? fgcd(b, fmod(a, b)) : a;}
-
-//const int dir[4][2] = {1, 0, 0, 1, -1, 0, 0, -1};
-//const int dirr[8][2] = {1, 0, 1, 1, 0, 1, -1, 1, -1, 0, -1, -1, 0, -1, 1, -1};
-//const int knight_dir[8][2] = {1, 2, 1, -2, -1, 2, -1, -2, 2, 1, 2, -1, -2, 1, -2, -1};
-
-/// 不可使用如下间接保留字：rank, tm,time, write, j0,j1,jn,y0,y1,yn
-/// 如果用gets(s), GC(ch)读入WA的话，请用SS(s), scanf(" %c ", &ch)代替
-/// 在main()中大量初始化STL类型容易死机
-/// 注意strncpy不会加尾0，请手动添加
-/// 相对位置不变的排序stable_sort(a, a + n);
-/// C++会帮你往上类型转换，但G++不会
-/*G++扩栈
-int __size__ = 256 << 20; // 256MB
-char *__p__ = (char*)malloc(__size__) + __size__;
-__asm__("movl %0, %%esp\n" :: "r"(__p__));
-*/
-//ios_base::sync_with_stdio(false);
 typedef pair<int, int> p2;
 typedef set<p2>::iterator siter;
 
 #define x first
 #define y second
-//#define MT(a, b, c) make_pair(make_pair(a, b), c)
 #define loop(it, a) for (it = a.begin(); it != a.end(); ++it)
-
-//const double eps = 1e-8;
-//const ll mod = ll(1e9) + 7; /// *或int
-#define Pcas() printf("Case %d: ", ++cas) /// *注意C的大小写
 
 set<p2> s;
 
