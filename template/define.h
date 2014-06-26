@@ -168,15 +168,3 @@ typedef pair<int, pair<int, int> > pi3;
 //const ll mod = ll(1e9) + 7;
 #define Pcas() printf("Case %d: ", ++cas) /// *注意C的大小写
 const int mx = int(1e5) + 5;
- 
- 
- 
-    #define IO /// *别忘了删掉!
-int main()
-{
-#ifdef IO
-    Fin("in.txt");
-#endif
-   
-    return 0;
-}
