@@ -125,7 +125,7 @@ char s[100];
 
 int main()
 {
-	ull M, E, b, i;
+	ull M, E, b;
 	double a, A, tmp, diff;
 	while (scanf("%s", s), strcmp(s, "0e0"))
 	{
