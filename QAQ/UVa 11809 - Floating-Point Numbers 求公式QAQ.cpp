@@ -151,7 +151,7 @@ int main()
 	//freopen("in.txt", "r", stdin);
 	ull M, E, b, i;
 	double a, A, diff;
-	while (scanf("%s", s), strcmp(s, "0e0"))
+	while (scanf("%s", s), s[1] != 'e')
 	{
 		*strchr(s, 'e') = 32;
 		sscanf(s, "%lf%llu", &a, &b);
