@@ -4,6 +4,7 @@
 #include<cmath>
 #include<cstdlib>
 #include<climits>
+#include<cassert>
 #include<iostream>
 #include<sstream>
 #include<algorithm>
@@ -22,10 +23,20 @@
 //#include<bits/stdc++.h>
 using namespace std;
  
+#define tm ttttttt
+#define j0 jjjjjjj
+#define j1 jjjjjjjj
+#define jn jjjjjjjjj
+#define y0 yyyyyyy
+#define y1 yyyyyyyy
+#define yn yyyyyyyyy
+#define arg aaaaaaa
+
 #define Fin(f) freopen(f, "r", stdin)
 #define Fout(f) freopen(f, "w", stdout)
 #define SR() srand((unsigned)time(NULL))
 #define random(m) ((rand() << 16 | rand()) % m) /// [0,m)之间的伪随机数
+#define AS(a) assert(a)
 
 #define all(a) a.begin(), a.end()
 
@@ -48,6 +59,7 @@ using namespace std;
 #define Sqrt(n) (int)sqrt(0.5 + n)
  
 #define For(i, n) for (i = 0; i < (n); ++i)
+//#define For(i, n) for (int i = 0, _ = (n); i < _; ++i)
 #define Forr(i, start, n) for (i = start; i < (n); ++i)
 #define Forrr(i, start, n, step) for (i = start; i < (n); i += (step))
 #define rFor(i, n) for (i = (n); i >= 0; --i)
@@ -71,7 +83,7 @@ using namespace std;
 #define SA(a, i, n) For(i, n) scanf("%d", a + i) /// 便于扩展 *不要在后面加逗号！
 #define SAA(a, i, n, j, m) For(i, n) For(j, m) SI(a[i][j]) /// *不要在后面加逗号！
 #define GC(c) (c = getchar())
-#define GCn() getchar()
+#define Gn() getchar()
 #define UC(c) ungetc(c, stdin)
 #define SS(s) scanf("%s", s)
 #define SSS(s, s2) scanf("%s%s", s, s2)
@@ -122,8 +134,9 @@ using namespace std;
 #define Range(a, n, x) equal_range(a, a + (n), x) /// 返回pair
 #define Fpos(a, n, x) (find(a, a + (n), x) - (a))
 #define Fd(a, x) (find(all(a), x) != a.end())
-#define Qmin(a, b) if(a > (b)) a = (b)
-#define Qmax(a, b) if(a < (b)) a = (b) /// *有时候要事先记下(b)的运算结果
+template<class T> inline void Qmin(T &a, const T b) {if (b < a) a = b;}
+template<class T> inline void Qmax(T &a, const T b) {if (a < b) a = b;} /// *若考虑位置，加上等号
+template<class T> inline T ceil(T x, T y) {return (x - 1) / y + 1;}
 
 const int inf = 0x3f3f3f3f; /// 1.06e9 (INT_MAX为2.147e9)
 const long long llinf = 0x3f3f3f3f3f3f3f3fLL; /// 4.56e18 (LLONG_MAX为9.22e18)
@@ -137,9 +150,10 @@ const double pi = acos(-1.0);
  
 int gcd(int a, int b) {return b ? gcd(b, a % b) : a;}
  
-/// 不可使用如下间接保留字：rank, tm,time, write, j0,j1,jn,y0,y1,yn
+/// INT_MAX = -1u >> 1
 /// 如果用gets(s), GC(ch)读入WA的话，请用SS(s), scanf(" %c ", &ch)代替
 /// 在main()中大量初始化STL类型容易死机
+/// 不要出现 val[i] = ++i 这样的行为！
 /// 注意strncpy不会加尾0，请手动添加
 /// 相对位置不变的排序stable_sort(a, a + n);
 //#pragma comment(linker, "/STACK:102400000,102400000")
@@ -150,12 +164,12 @@ typedef long long ll;
 typedef unsigned long long ull;
 typedef long double ld;
 typedef vector<int>::iterator viter;
-typedef set<int>::iterator siter; /// *请即时修改模板参数
-typedef map<int, int>::iterator miter; /// *请即时修改模板参数
+typedef set<int>::iterator siter; /// *修改模板参数
+typedef map<int, int>::iterator miter; /// *修改模板参数
 typedef multiset<int>::iterator msiter;
 typedef multimap<int, int>::iterator mmter;
-typedef priority_queue<int> pqi; /// *请即时修改模板参数
-typedef priority_queue<int, vector<int>, greater<int> > spqi; /// 小的在top  *请即时修改模板参数
+typedef priority_queue<int> pqi; /// *修改模板参数
+typedef priority_queue<int, vector<int>, greater<int> > spqi; /// 小的在top  *修改模板参数
 typedef pair<int, int> p2; /// 赋值时直接SII(a[i].x, a[i].y)就行, 有时候用LL
 typedef pair<pair<int, int>, int> p3;
 typedef pair<int, pair<int, int> > pi3;
@@ -166,5 +180,17 @@ typedef pair<int, pair<int, int> > pi3;
  
 //const double eps = 1e-8;
 //const ll mod = ll(1e9) + 7;
-#define Pcas() printf("Case %d: ", ++cas) /// *注意C的大小写
+#define Pcas() printf("Case %d: ", ++cas) /// *注意C的大小写，空输出注意去空格
 const int mx = int(1e5) + 5;
+
+
+
+#define IO /// *别忘了删掉!
+int main()
+{
+#ifdef IO
+    Fin("in.txt");
+#endif
+   
+    return 0;
+}
