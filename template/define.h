@@ -185,7 +185,7 @@ const int mx = int(1e5) + 5;
 
 
 
-#define IO /// *别忘了删掉!
+#define IO
 int main()
 {
 #ifdef IO
