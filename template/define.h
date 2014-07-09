@@ -114,7 +114,8 @@ using namespace std;
 #define SUni(a) sort(all(a)); Uni(a) /// STL专用
 #define Unii(a, n) (unique(a, a + (n)) - a)
 #define SUnii(a, n) sort(a, a + n); Unii(a, n)
-#define Acc(a, n) (accumulate(a, a + (n), 0)) /// 注意0LL!!!!!以及0.0!!! 
+#define Acc(a, n) (accumulate(a, a + (n), 0)) /// 可以Acc(a.begin(), k);    *注意0LL以及0.0！ 
+#define Accv(a) (accumulate(all(a), 0)) /// *注意0LL以及0.0！
 #define AaddB(a, n, b) transform(a, a + (n), b, a, plus<int>()) /// *慢的话就改为For(i, n) a[i] += b[i](注意加int i)
 #define mem(a, num) memset(a, num, sizeof(a))
 #define cpy(to, from) memcpy(to, from, sizeof(from))
@@ -128,15 +129,17 @@ using namespace std;
 #define Max(a, n) (*max_element(a, a + (n)))
 #define Minpos(a, n) (min_element(a, a + (n)) - (a))
 #define Maxpos(a, n) (max_element(a, a + (n)) - (a))
-#define Lowpos(a, n, x) (lower_bound(a, a + (n), x) - (a)) /// *加个gr()变成<=
-#define Upppos(a, n, x) (upper_bound(a, a + (n), x) - (a)) /// *加个gr()变成<
+#define Lval(a, n, x) (*lower_bound(a, a + (n), x))
+#define Uval(a, n, x) (*upper_bound(a, a + (n), x))
+#define Lpos(a, n, x) (lower_bound(a, a + (n), x) - (a)) /// *加个gr()变成<=
+#define Upos(a, n, x) (upper_bound(a, a + (n), x) - (a)) /// *加个gr()变成<
 #define BS(a, n, x) binary_search(a, a + (n), x) /// 返回bool值
 #define Range(a, n, x) equal_range(a, a + (n), x) /// 返回pair
 #define Fpos(a, n, x) (find(a, a + (n), x) - (a))
 #define Fd(a, x) (find(all(a), x) != a.end())
 template<class T> inline void Qmin(T &a, const T b) {if (b < a) a = b;}
 template<class T> inline void Qmax(T &a, const T b) {if (a < b) a = b;} /// *若考虑位置，加上等号
-template<class T> inline T ceil(T x, T y) {return (x - 1) / y + 1;}
+inline int Qceil(int x, int y) {return (x - 1) / y + 1;} /// *注意类型。快速上取整
 
 const int inf = 0x3f3f3f3f; /// 1.06e9 (INT_MAX为2.147e9)
 const long long llinf = 0x3f3f3f3f3f3f3f3fLL; /// 4.56e18 (LLONG_MAX为9.22e18)
@@ -181,16 +184,6 @@ typedef pair<int, pair<int, int> > pi3;
 //const double eps = 1e-8;
 //const ll mod = ll(1e9) + 7;
 #define Pcas() printf("Case %d: ", ++cas) /// *注意C的大小写，空输出注意去空格
+int cas;
 const int mx = int(1e5) + 5;
 
-
-
-#define IO
-int main()
-{
-#ifdef IO
-    Fin("in.txt");
-#endif
-   
-    return 0;
-}
