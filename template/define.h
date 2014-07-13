@@ -39,6 +39,9 @@ using namespace std;
 #define AS(a) assert(a)
 
 #define all(a) a.begin(), a.end()
+#define PB push_back
+#define sq(x) ((x) * (x))
+#define Sqrt(n) (int)sqrt(0.5 + n)
 
 #define Inter(v, a, n, b, m) v.resize(set_intersection(a, a + (n), b, b + (m), v.begin()) - v.begin())
 #define SInter(v, a, n, b, m) v.resize((n) + (m)); sort(a, a + (n)); sort(b, b + (m)); Inter(v, a, n, b, m)
@@ -49,14 +52,11 @@ using namespace std;
 #define Sym(v, a, n, b, m) v.resize(set_symmetric_difference(a, a + (n), b, b + (m) v.begin()) - v.begin())
 #define SSym(v, a, n, b, m) v.resize((n) + (m)); sort(a, a + (n)); sort(b, b + (m)); Sym(v, a, n, b, m)
 
-#define PB push_back
-#define MP make_pair
-#define Cnt1(n) (__builtin_popcount(n))
-#define Cntt1(n) (__builtin_popcountll(n)) /// 参数必须为ull类型
-#define cb(n) (32 - __builtin_clz(n))
-#define cbb(n) (64 - __builtin_clzll(n)) /// 参数必须为ull类型
-#define sq(x) ((x) * (x))
-#define Sqrt(n) (int)sqrt(0.5 + n)
+#define Cnt1 __builtin_popcount /// Cnt1ll就是ull的了
+#define LBpos(n) (31 - __builtin_clz(n))
+#define LBposll(n) (63 - __builtin_clzll(n))
+#define RBpos(n) (__builtin_ffs(n) - 1)
+#define RBposll(n) (__builtin_ffsll(n) - 1)
  
 #define For(i, n) for (i = 0; i < (n); ++i)
 //#define For(i, n) for (int i = 0, _ = (n); i < _; ++i)
@@ -80,9 +80,9 @@ using namespace std;
 #define SDD(a, b) scanf("%lf%lf", &a, &b)
 #define SDDD(a, b, c) scanf("%lf%lf%lf", &a, &b, &c)
 #define SDDDD(a, b, c, d) scanf("%lf%lf%lf%lf", &a, &b, &c, &d)
-#define SA(a, i, n) For(i, n) scanf("%d", a + i) /// 便于扩展
-#define SAA(a, i, n, j, m) For(i, n) For(j, m) SI(a[i][j])
-#define SAA1(a, i, n, j, m) Forr(i, 1, n + 1) Forr(j, 1, m + 1) SI(a[i][j])
+#define SA(a, i, n) For(i, n) scanf("%d", a + i) /// 便于扩展 *不要在后面加逗号！
+#define SAA(a, i, n, j, m) For(i, n) For(j, m) SI(a[i][j]) /// *不要在后面加逗号！
+#define SAA1(a, i, n, j, m) Forr(i, 1, n + 1) Forr(j, 1, m + 1) SI(a[i][j]) /// *不要在后面加逗号！
 #define SS(s) scanf("%s", s)
 #define SSS(s, s2) scanf("%s%s", s, s2)
 #define SC(c) scanf(" %c", &c)
@@ -101,18 +101,18 @@ using namespace std;
 #define PD(a) printf("%f\n", a)
 #define PDD(a, b) printf("%f %f\n", a, b)
 #define PDDD(a, b, c) printf("%f %f %f\n", a, b, c)
-#define PA(a, i, n) For(i, (n) - 1) printf("%d ", a[i]); PI(a[(n) - 1])
+#define PA(a, i, n) For(i, (n) - 1) printf("%d ", a[i]); PI(a[(n) - 1]) /// *(有时要在前面加花括号)由于要支持STL的数据类型，故不用+的形式，必要时请手动改成+  
 #define PAA(a, i, n, j, m) For(i, n) {For(j, (m) - 1) printf("%d ", a[i][j]); PI(a[i][(m) - 1]);}
 #define PAn(a, i, n) For(i, n) PI(a[i])
 #define PiA(a, i, n) For(i, n) PII(i, a[i]) /// debug用
-#define rPA(a, i, n) rForr(i, n - 1, 1) printf("%d ", a[i]); PI(a[0])
+#define rPA(a, i, n) rForr(i, n - 1, 1) printf("%d ", a[i]); PI(a[0]) /// *(有时要在前面加花括号)
 #define rPAn(a, i, n) rFor(i, n - 1) PI(a[i])
 #define PC(c) putchar(c)
 #define Pn() putchar(10)
 #define Ps() putchar(32)
  
-#define Uni(a) a.resize(unique(all(a)) - a.begin())
-#define SUni(a) sort(all(a)); Uni(a)
+#define Uni(a) a.resize(unique(all(a)) - a.begin()) /// STL专用
+#define SUni(a) sort(all(a)); Uni(a) /// STL专用
 #define Unii(a, n) (unique(a, a + (n)) - a)
 #define SUnii(a, n) sort(a, a + n); Unii(a, n)
 #define Acc(a, n) (accumulate(a, a + (n), 0)) /// 可以Acc(a.begin(), k);    *注意0LL以及0.0！ 
@@ -132,15 +132,15 @@ using namespace std;
 #define Maxpos(a, n) (max_element(a, a + (n)) - (a))
 #define Lval(a, n, x) (*lower_bound(a, a + (n), x))
 #define Uval(a, n, x) (*upper_bound(a, a + (n), x))
-#define Lpos(a, n, x) (lower_bound(a, a + (n), x) - (a)) /// *gr()
-#define Upos(a, n, x) (upper_bound(a, a + (n), x) - (a)) /// *gr()
+#define Lpos(a, n, x) (lower_bound(a, a + (n), x) - (a)) /// *加个gr()变成<=
+#define Upos(a, n, x) (upper_bound(a, a + (n), x) - (a)) /// *加个gr()变成<
 #define BS(a, n, x) binary_search(a, a + (n), x) /// 返回bool值
 #define Range(a, n, x) equal_range(a, a + (n), x) /// 返回pair
 #define Fpos(a, n, x) (find(a, a + (n), x) - (a))
 #define Fd(a, x) (find(all(a), x) != a.end())
 template<class T> inline void Qmin(T &a, const T b) {if (b < a) a = b;}
 template<class T> inline void Qmax(T &a, const T b) {if (a < b) a = b;} /// *若考虑位置，加上等号
-inline int Qceil(int x, int y) {return (x - 1) / y + 1;} /// *快速上取整
+inline int Qceil(int x, int y) {return (x - 1) / y + 1;} /// *注意类型。快速上取整
 
 const int inf = 0x3f3f3f3f; /// 1.06e9 (INT_MAX为2.147e9)
 const long long llinf = 0x3f3f3f3f3f3f3f3fLL; /// 4.56e18 (LLONG_MAX为9.22e18)
@@ -155,7 +155,7 @@ const double pi = acos(-1.0);
 int gcd(int a, int b) {return b ? gcd(b, a % b) : a;}
  
 /// INT_MAX = -1u >> 1
-/// 如果用gets(s), GC(ch)读入WA的话，请用SS(s), SC(ch)代替
+/// 如果用gets(s), GC(ch)读入WA的话，请用SS(s), scanf(" %c ", &ch)代替
 /// 在main()中大量初始化STL类型容易死机
 /// 不要出现 val[i] = ++i 这样的行为！
 /// 注意strncpy不会加尾0，请手动添加
@@ -179,7 +179,6 @@ typedef pair<pair<int, int>, int> p3;
 typedef pair<int, pair<int, int> > pi3;
 //#define x first
 //#define y second
-//#define MT(a, b, c) make_pair(make_pair(a, b), c)
 #define loop(it, a) for (it = a.begin(); it != a.end(); ++it)
  
 //const double eps = 1e-8;
@@ -188,6 +187,5 @@ typedef pair<int, pair<int, int> > pi3;
 inline bool okC(char &c) {return c = Gn(), c != 10 && ~c;}
 inline bool okS(char *s) {return s = gets(s), s && *s;}
 #define TT int tttt; scanf("%d%*c", &tttt); while(tttt--) /// TT{ ... }
-#define Pcas() printf("Case %d: ", ++cas)
+#define Pcas() printf("Case %d: ", ++cas) /// *注意C的大小写，空输出注意去空格
 int cas;
-const int mx = int(1e5) + 5;
