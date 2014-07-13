@@ -186,7 +186,7 @@ typedef pair<int, pair<int, int> > pi3;
 //const ll mod = ll(1e9) + 7;
 
 inline bool okC(char &c) {return c = Gn(), c != 10 && ~c;}
-inline bool okS(char *s) {char *p = gets(s); return p && *p;}
+inline bool okS(char *s) {return s = gets(s), s && *s;}
 #define TT int tttt; scanf("%d%*c", &tttt); while(tttt--) /// TT{ ... }
 #define Pcas() printf("Case %d: ", ++cas)
 int cas;
