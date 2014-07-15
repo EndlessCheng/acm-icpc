@@ -184,7 +184,7 @@ typedef pair<int, pair<int, int> > pi3;
 //const double eps = 1e-8;
 //const ll mod = ll(1e9) + 7;
 
-inline bool okC(char &c) {return c = Gn(), c != 10 && ~c;}
+inline bool okC(char &c) {return c = getchar(), c != 10 && ~c;}
 inline bool okS(char *s) {return s = gets(s), s && *s;}
 #define TT int tttt; scanf("%d%*c", &tttt); while(tttt--) /// TT{ ... }
 #define Pcas() printf("Case %d: ", ++cas) /// *注意C的大小写，空输出注意去空格
