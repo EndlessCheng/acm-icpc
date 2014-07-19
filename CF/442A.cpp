@@ -17,10 +17,12 @@ int main()
 	int i, j, n, ans;
 	siter it;
 	For(i, 10) id[hint[i]] = i;
+	
 	scanf("%d", &n);
 	For(i, n) scanf("%s", s), card.insert(1 << id[s[0]] | 1 << id[s[1]]);
-	ans = inf;
 	n = card.size();
+	
+	ans = inf;
 	For(i, 1 << 10)
 	{
 		res.clear();
