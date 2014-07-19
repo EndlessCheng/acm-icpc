@@ -9,7 +9,7 @@ const char hint[11] = "RGBWY12345";
 const int inf = 0x3f3f3f3f;
 
 int id[128];
-char s[5];
+char s[5]; 
 set<int> card, res;
 
 int main()
