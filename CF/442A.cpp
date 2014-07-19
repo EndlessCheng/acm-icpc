@@ -1,8 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
+
 #define For(i, n) for (i = 0; i < (n); ++i)
 #define loop(it, a) for (it = a.begin(); it != a.end(); ++it)
 typedef set<int>::iterator siter;
+
 const char hint[11] = "RGBWY12345";
 const int inf = 0x3f3f3f3f;
 
