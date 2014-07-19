@@ -21,6 +21,7 @@ using namespace std;
 #define sq(x) ((x) * (x))
 #define Sqrt(n) (int)sqrt(0.5 + n)
 
+/// 注意在调用前v一定要开足量的空间
 #define Inter(v, a, n, b, m) v.resize(set_intersection(a, a + (n), b, b + (m), v.begin()) - v.begin())
 #define SInter(v, a, n, b, m) v.resize((n) + (m)); sort(a, a + (n)); sort(b, b + (m)); Inter(v, a, n, b, m)
 #define Union(v, a, n, b, m) v.resize(set_union(a, a + (n), b, b + (m), v.begin()) - v.begin());
@@ -104,7 +105,10 @@ using namespace std;
 #define Rcpy(l, r, b) reverse_copy(l, r, b) /// 注意为左闭右开区间
 #define kTo10(ans, str, s, m, k) strncpy(str, s, m), str[m] = 0, ans = strtol(str, NULL, k)
 
-#define gr() greater<int>()
+#define LE() less_equal<int>()
+#define GR() greater<int>()
+#define GE() greater_equal<int>()
+
 #define nth(a, k, n) nth_element(a + 0, a + k, a + n) /// *可能要事先--k
 #define nthg(a, k, n) nth_element(a + 0, a + k, a + n, greater<int>()) /// *可能要事先--k
 #define Min(a, n) (*min_element(a, a + (n)))
@@ -121,7 +125,7 @@ using namespace std;
 #define Fd(a, x) (find(all(a), x) != a.end())
 template<class T> inline void Qmin(T &a, const T b) {if (b < a) a = b;}
 template<class T> inline void Qmax(T &a, const T b) {if (a < b) a = b;} /// *若考虑位置，加上等号
-inline int Qceil(int x, int y) {return x ? (x - 1) / y + 1 : 0;} /// *注意类型。快速上取整
+inline int Qceil(int x, int y) {return x ? (x - 1) / y + 1 : 0;} /// *注意类型。y必须为正
 
 const int inf = 0x3f3f3f3f; /// 1.06e9 (INT_MAX为2.147e9)
 const long long llinf = 0x3f3f3f3f3f3f3f3fLL; /// 4.56e18 (LLONG_MAX为9.22e18)
