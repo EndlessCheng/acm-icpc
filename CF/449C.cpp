@@ -19,7 +19,7 @@ int main()
 		if (multi.size() & 1)
 		{
 			if (multi.size() == 1) continue;
-			ans.PB(multi[0]), ans. PB(multi[2]), vis[multi[0]] = vis[multi[2]] = true;
+			ans.PB(multi[0]), ans. PB(multi[2]), vis[multi[0]] = vis[multi[2]] = true; // 如果总共有奇数个，2p先不统计
 			For(j, 3, multi.size()) ans.PB(multi[j]), vis[multi[j]] = true;
 		}
 		else For(j, 0, multi.size()) ans.PB(multi[j]), vis[multi[j]] = true;
