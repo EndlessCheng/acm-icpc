@@ -1,7 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define PB push_back
-#define For(i, n) for (i = 0; i < (n); ++i)
 
 typedef pair<bool, int> p2;
 typedef pair<long long, p2> p3;
@@ -12,14 +11,14 @@ bool vis[mx];
 
 void read(int m, int k)
 {
-	int i, from, to, cost;
-	For(i, m)
+	int from, to, cost;
+	while(m--)
 	{
 		scanf("%d%d%d", &from, &to, &cost);
 		G[from].PB(p3(cost, p2(false, to)));
 		G[to].PB(p3(cost, p2(false, from)));
 	}
-	For(i, k)
+	while(k--)
 	{
 		scanf("%d%d", &to, &cost);
 		G[1].PB(p3(cost, p2(true, to)));
