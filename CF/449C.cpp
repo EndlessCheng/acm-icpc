@@ -8,8 +8,8 @@ const int mx = int(1e5) + 5;
 vector<int> multi, ans;
 bool vis[mx];
 
-int main()
-{
+int main() /*  思路和素数筛法的类似的  */
+{       
 	int n, m, i, j;
 	scanf("%d", &n), m = n >> 1;
 	For(i, 3, m + 1)
