@@ -1,6 +1,7 @@
 #include<cstdio>
+typedef long long;
 
-long long gcd(long long a, long long b) {return b ? gcd(b, a % b) : a;}
+ll gcd(ll a, ll b) {return b ? gcd(b, a % b) : a;}
 
 struct frac // frac ans(0, 1);
 {
