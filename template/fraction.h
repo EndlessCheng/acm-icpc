@@ -1,5 +1,5 @@
 #include<cstdio>
-typedef long long;
+typedef long long ll;
 
 ll gcd(ll a, ll b) {return b ? gcd(b, a % b) : a;}
 
