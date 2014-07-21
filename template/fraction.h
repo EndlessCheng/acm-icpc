@@ -3,7 +3,7 @@ typedef long long ll;
 
 ll gcd(ll a, ll b) {return b ? gcd(b, a % b) : a;}
 
-struct frac // frac ans(0, 1);
+struct frac
 {
 	ll up, low;
 	frac(ll up = 0, ll low = 1)
