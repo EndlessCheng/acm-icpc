@@ -242,7 +242,7 @@ int solve(int k)
 int main()
 {
 #ifndef ONLINE_JUDGE
-	Fin("in.txt"); // *
+	//Fin("in.txt"); // *
 #endif
 	int i, k, ans;
 	double x, y;
