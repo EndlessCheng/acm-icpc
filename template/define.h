@@ -191,8 +191,7 @@ inline int _len(int x) {int cnt = 0; for (; x; ++cnt, x /= 10); return cnt;}
 #define DII(a, b) _set(), printf(#a" = "), cout << (a), printf(", "#b" = "), cout << (b) << endl, _unset()
 #define DIII(a, b, c) _set(), printf(#a" = "), cout << (a), printf(", "#b" = "), cout << (b), printf(", "#c" = "), cout << (c) << endl, _unset()
 #define DIIII(a, b, c, d) _set(), printf(#a" = "), cout << (a), printf(", "#b" = "), cout << (b), printf(", "#c" = "), cout << (c), printf(", "#d" = "), cout << (d) << endl, _unset()
-#define DA(a, i) printf(#a"[%2d] = ", i), cout << a[i] << endl
-#define DAA(a, i, j) printf(#a"[%2d][%2d] = ", i, j), cout << a[i][j] << endl
-#define DF(a, i, n) For(i, n) DA(a, i);
+#define DA(a, i, n) For(i, n) printf(#a"[%2d] = ", i), cout << a[i] << endl
+#define DAA(a, i, n, j, m) For(i, n) For(j, m) printf(#a"[%2d][%2d] = ", i, j), cout << a[i][j] << endl
 #define Pcas() printf("Case %d: ", ++cas) // *注意C的大小写，空输出注意去空格
 int cas;
