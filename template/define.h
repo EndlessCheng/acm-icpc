@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
- 
+
 #define tm ttttttt
 #define j0 jjjjjjj
 #define j1 jjjjjjjj
@@ -9,7 +9,7 @@ using namespace std;
 #define y1 yyyyyyyy
 #define yn yyyyyyyyy
 #define arg aaaaaaa
- 
+
 #define Fin(f) freopen(f, "r", stdin)
 #define Fout(f) freopen(f, "w", stdout)
 #define SR() srand((unsigned)time(NULL))
@@ -40,7 +40,7 @@ using namespace std;
 #define LBposll(n) (63 - __builtin_clzll(n))
 #define RBpos(n) (__builtin_ffs(n) - 1)
 #define RBposll(n) (__builtin_ffsll(n) - 1)
- 
+
 #define For(i, n) for (i = 0; i < (n); ++i)
 //#define For(i, n) for (int i = 0, _ = (n); i < _; ++i)
 #define Forr(i, start, n) for (i = start; i < (n); ++i)
@@ -48,7 +48,9 @@ using namespace std;
 #define rFor(i, n) for (i = (n); i >= 0; --i)
 #define rForr(i, n, end) for (i = n; i >= (end); --i)
 #define rForrr(i, n, end, step) for (i = n; i >= (end); i -= step)
- 
+#define loop(it, a) for (it = a.begin(); it != a.end(); ++it)
+#define rloop(it, a) for (it = a.rbegin(); it != a.rend(); ++it)
+
 #define SI(a) scanf("%d", &a)
 #define SII(a, b) scanf("%d%d", &a, &b)
 #define SIII(a, b, c) scanf("%d%d%d", &a, &b, &c)
@@ -72,7 +74,7 @@ using namespace std;
 #define GC(c) (c = getchar())
 #define Gn() getchar()
 #define UC(c) ungetc(c, stdin)
- 
+
 #define PI(a) printf("%d\n", a)
 #define PII(a, b) printf("%d %d\n", a, b)
 #define PIII(a, b, c) printf("%d %d %d\n", a, b, c)
@@ -93,12 +95,12 @@ using namespace std;
 #define PC(c) putchar(c)
 #define Pn() putchar(10)
 #define Ps() putchar(32)
- 
+
 #define Uni(a) a.resize(unique(all(a)) - a.begin()) // STL专用
 #define SUni(a) sort(all(a)); Uni(a) // STL专用
 #define Unii(a, n) (unique(a, a + (n)) - a)
 #define SUnii(a, n) sort(a, a + n); Unii(a, n)
-#define Acc(a, n) (accumulate(a, a + (n), 0)) /// 可以Acc(a.begin(), k);    *注意0LL以及0.0！ 
+#define Acc(a, n) (accumulate(a, a + (n), 0)) /// 可以Acc(a.begin(), k);    *注意0LL以及0.0！
 #define Accv(a) (accumulate(all(a), 0)) // *注意0LL以及0.0！
 #define AaddB(a, n, b) transform(a, a + (n), b, a, plus<int>()) // *慢的话就改为For(i, n) a[i] += b[i](注意加int i)
 #define mem(a, num) memset(a, num, sizeof(a))
@@ -109,6 +111,7 @@ using namespace std;
 #define LE(T) less_equal<T>()
 #define GR(T) greater<T>()
 #define GE(T) greater_equal<T>()
+#define NET(T) not_equal_to<T>()
 
 #define nth(a, k, n) nth_element(a + 0, a + k, a + n) // *可能要事先--k
 #define nthg(a, k, n) nth_element(a + 0, a + k, a + n, greater<int>()) // *可能要事先--k
@@ -122,7 +125,7 @@ using namespace std;
 #define Upos(a, n, x) (upper_bound(a, a + (n), x) - (a)) // *加个gr()变成<
 #define BS(a, n, x) binary_search(a, a + (n), x) // 返回bool值
 #define Range(a, n, x) equal_range(a, a + (n), x) // 返回pair
-#define Fpos(a, n, x) (find(a, a + (n), x) - (a)) 
+#define Fpos(a, n, x) (find(a, a + (n), x) - (a))
 #define Fd(a, x) (find(all(a), x) != a.end())
 template<class T> inline void Qmin(T &a, const T b) {if (b < a) a = b;}
 template<class T> inline void Qmax(T &a, const T b) {if (a < b) a = b;} // *若考虑位置，加上等号
@@ -145,7 +148,7 @@ long long gcd(long long a, long long b){return b ? gcd(b, a % b) : a;}
 // 在main()中大量初始化STL类型容易死机
 // 不要出现 val[i] = ++i 这样的行为！
 // 注意strncpy不会加尾0，请手动添加
-// 相对位置不变的排序stable_sort(a, a + n); 
+// 相对位置不变的排序stable_sort(a, a + n);
 // C++会帮你往上类型转换，但G++不会
 // advance(it, n); 相当于 For(i, n) ++it;
 // size()是ui类型的，应该(int)xx.size()
@@ -157,6 +160,14 @@ __asm__("movl %0, %%esp\n" :: "r"(__p__));
 */
 
 //ios_base::sync_with_stdio(false);
+#define _set() cout.precision(15)//, cout.setf(ios::hex, ios::basefield), cout.setf(ios::showbase)
+#define _unset() cout.unsetf(ios::floatfield)//, cout.unsetf(ios::hex), cout.unsetf(ios::showbase)
+#define DI(a) _set(), printf(#a" = "), cout << (a) << endl, _unset()
+#define DII(a, b) _set(), printf(#a" = "), cout << (a), printf(", "#b" = "), cout << (b) << endl, _unset()
+#define DIII(a, b, c) _set(), printf(#a" = "), cout << (a), printf(", "#b" = "), cout << (b), printf(", "#c" = "), cout << (c) << endl, _unset()
+#define DIIII(a, b, c, d) _set(), printf(#a" = "), cout << (a), printf(", "#b" = "), cout << (b), printf(", "#c" = "), cout << (c), printf(", "#d" = "), cout << (d) << endl, _unset()
+#define DA(a, i, n) For(i, n) printf(#a"[%2d] = ", i), cout << a[i] << endl
+#define DAA(a, i, n, j, m) For(i, n) For(j, m) printf(#a"[%2d][%2d] = ", i, j), cout << a[i][j] << endl
 
 typedef unsigned int ui;
 typedef long long ll;
@@ -176,22 +187,14 @@ typedef pair<int, pair<int, int> > pi3;
 //#define y second
 //p2 operator + (const p2 &a, const p2 &b) {return p2(a.x + b.x, a.y + b.y);}
 //p2 operator += (p2 &a, const p2 &b) {return a = a + b;}
-#define loop(it, a) for (it = a.begin(); it != a.end(); ++it)
 
 //const double eps = 1e-8;
 //const ll mod = ll(1e9) + 7; // *或int
 
-#define TT int tttt; scanf("%d%*c", &tttt); while(tttt--) // TT{ ... }
 inline bool okC(char &c) {return c = getchar(), c != 10 && ~c;} //return (c = getchar()) == 32;
 inline bool okS(char *s) {return s = gets(s), s && *s;}
 inline int _len(int x) {int cnt = 0; for (; x; ++cnt, x /= 10); return cnt;}
-#define _set() cout.precision(15)//, cout.setf(ios::hex, ios::basefield), cout.setf(ios::showbase)
-#define _unset() cout.unsetf(ios::floatfield)//, cout.unsetf(ios::hex), cout.unsetf(ios::showbase)
-#define DI(a) _set(), printf(#a" = "), cout << (a) << endl, _unset()
-#define DII(a, b) _set(), printf(#a" = "), cout << (a), printf(", "#b" = "), cout << (b) << endl, _unset()
-#define DIII(a, b, c) _set(), printf(#a" = "), cout << (a), printf(", "#b" = "), cout << (b), printf(", "#c" = "), cout << (c) << endl, _unset()
-#define DIIII(a, b, c, d) _set(), printf(#a" = "), cout << (a), printf(", "#b" = "), cout << (b), printf(", "#c" = "), cout << (c), printf(", "#d" = "), cout << (d) << endl, _unset()
-#define DA(a, i, n) For(i, n) printf(#a"[%2d] = ", i), cout << a[i] << endl
-#define DAA(a, i, n, j, m) For(i, n) For(j, m) printf(#a"[%2d][%2d] = ", i, j), cout << a[i][j] << endl
+//struct comp {bool operator()(const double &a, const double &b)const {return a + eps < b;}};
+#define TT int tttt; scanf("%d%*c", &tttt); while(tttt--) // TT{ ... }
 #define Pcas() printf("Case %d: ", ++cas) // *注意C的大小写，空输出注意去空格
 int cas;
