@@ -190,10 +190,10 @@ typedef priority_queue<int, vector<int>, greater<int> > spqi; // 小的在top
 
 //const double eps = 1e-8;
 //const ll mod = ll(1e9) + 7; // *或int
-ll gcd(ll a, ll b){return b ? gcd(b, a % b) : a;}
-inline bool okC(char &c) {return c = getchar(), c != 10 && ~c;} //return (c = getchar()) == 32;
-inline bool okS(char *s) {return s = gets(s), s && *s;}
-inline int _len(int x) {int cnt = 0; for (; x; ++cnt, x /= 10); return cnt;}
+//ll gcd(ll a, ll b){return b ? gcd(b, a % b) : a;}
+//inline bool okC(char &c) {return c = getchar(), c != 10 && ~c;} //return (c = getchar()) == 32;
+//inline bool okS(char *s) {return s = gets(s), s && *s;}
+//inline int _len(int x) {int cnt = 0; for (; x; ++cnt, x /= 10); return cnt;}
 //struct comp {bool operator()(const double &a, const double &b)const {return a + eps < b;}};
 #define TT int tttt; scanf("%d%*c", &tttt); while(tttt--) // TT{ ... }
 #define Pcas() printf("Case %d: ", ++cas) // *注意C的大小写，空输出注意去空格
