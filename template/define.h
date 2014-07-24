@@ -100,7 +100,7 @@ using namespace std;
 #define SUni(a) sort(all(a)); Uni(a) // STL专用
 #define Unii(a, n) (unique(a, a + (n)) - a)
 #define SUnii(a, n) sort(a, a + n); Unii(a, n)
-#define Acc(a, n) (accumulate(a, a + (n), 0)) /// 可以Acc(a.begin(), k);    *注意0LL以及0.0！
+#define Acc(a, n) (accumulate(a, a + (n), 0)) /// 可以Acc(a.begin(), k); *注意0LL以及0.0！
 #define Accv(a) (accumulate(all(a), 0)) // *注意0LL以及0.0！
 #define AaddB(a, n, b) transform(a, a + (n), b, a, plus<int>()) // *慢的话就改为For(i, n) a[i] += b[i](注意加int i)
 #define mem(a, num) memset(a, num, sizeof(a))
@@ -108,10 +108,10 @@ using namespace std;
 #define Rcpy(l, r, b) reverse_copy(l, r, b) // 注意为左闭右开区间
 #define kTo10(ans, str, s, m, k) strncpy(str, s, m), str[m] = 0, ans = strtol(str, NULL, k)
 
-#define LE(T) less_equal<T>()
-#define GR(T) greater<T>()
-#define GE(T) greater_equal<T>()
-#define NET(T) not_equal_to<T>()
+#define LE(T) less_equal<T>
+#define GR(T) greater<T>
+#define GE(T) greater_equal<T>
+#define NET(T) not_equal_to<T>
 
 #define nth(a, k, n) nth_element(a + 0, a + k, a + n) // *可能要事先--k
 #define nthg(a, k, n) nth_element(a + 0, a + k, a + n, greater<int>()) // *可能要事先--k
@@ -123,10 +123,11 @@ using namespace std;
 #define Uval(a, n, x) (*upper_bound(a, a + (n), x))
 #define Lpos(a, n, x) (lower_bound(a, a + (n), x) - (a)) // *加个gr()变成<=
 #define Upos(a, n, x) (upper_bound(a, a + (n), x) - (a)) // *加个gr()变成<
-#define BS(a, n, x) binary_search(a, a + (n), x) // 返回bool值
+//#define BS(a, n, x) binary_search(a, a + (n), x) // 返回bool值
 #define Range(a, n, x) equal_range(a, a + (n), x) // 返回pair
 #define Fpos(a, n, x) (find(a, a + (n), x) - (a))
-#define Fd(a, x) (find(all(a), x) != a.end())
+#define Fd(a, x) (a.find(x) != a.end())
+#define Fdd(a, x) (find(all(a), x) != a.end())
 template<class T> inline void Qmin(T &a, const T b) {if (b < a) a = b;}
 template<class T> inline void Qmax(T &a, const T b) {if (a < b) a = b;} // *若考虑位置，加上等号
 inline int Qceil(int x, int y) {return x ? (x - 1) / y + 1 : 0;} // *注意类型。y必须为正
@@ -140,8 +141,6 @@ const double pi = acos(-1.0);
 //const int dir[4][2] = {1, 0, 0, 1, -1, 0, 0, -1};
 //const int dirr[8][2] = {1, 0, 1, 1, 0, 1, -1, 1, -1, 0, -1, -1, 0, -1, 1, -1};
 //const int knight_dir[8][2] = {1, 2, 1, -2, -1, 2, -1, -2, 2, 1, 2, -1, -2, 1, -2, -1};
-
-long long gcd(long long a, long long b){return b ? gcd(b, a % b) : a;}
 
 // INT_MAX = -1u >> 1
 // 如果用gets(s), GC(ch)读入WA的话，请用SS(s), scanf(" %c ", &ch)代替
@@ -169,20 +168,21 @@ __asm__("movl %0, %%esp\n" :: "r"(__p__));
 #define DA(a, i, n) For(i, n) printf(#a"[%2d] = ", i), cout << a[i] << endl
 #define DAA(a, i, n, j, m) For(i, n) For(j, m) printf(#a"[%2d][%2d] = ", i, j), cout << a[i][j] << endl
 
+// *修改模板参数
 typedef unsigned int ui;
 typedef long long ll;
 typedef unsigned long long ull;
 typedef long double ld;
-typedef vector<int>::iterator viter;
-typedef set<int>::iterator siter; // *修改模板参数
-typedef map<int, int>::iterator miter; // *修改模板参数
-typedef multiset<int>::iterator msiter;
-typedef multimap<int, int>::iterator mmter;
-typedef priority_queue<int> pqi; // *修改模板参数
-typedef priority_queue<int, vector<int>, greater<int> > spqi; // 小的在top  *修改模板参数
-typedef pair<int, int> p2; // 赋值时直接SII(a[i].x, a[i].y)就行, 有时候用LL
+typedef pair<int, int> p2;
 typedef pair<pair<int, int>, int> p3;
 typedef pair<int, pair<int, int> > pi3;
+typedef vector<int>::iterator viter;
+typedef set<int>::iterator siter;
+typedef map<int, int>::iterator miter;
+typedef multiset<int>::iterator msiter;
+typedef multimap<int, int>::iterator mmter;
+typedef priority_queue<int> pqi;
+typedef priority_queue<int, vector<int>, greater<int> > spqi; // 小的在top
 //#define x first
 //#define y second
 //p2 operator + (const p2 &a, const p2 &b) {return p2(a.x + b.x, a.y + b.y);}
@@ -190,7 +190,7 @@ typedef pair<int, pair<int, int> > pi3;
 
 //const double eps = 1e-8;
 //const ll mod = ll(1e9) + 7; // *或int
-
+ll gcd(ll a, ll b){return b ? gcd(b, a % b) : a;}
 inline bool okC(char &c) {return c = getchar(), c != 10 && ~c;} //return (c = getchar()) == 32;
 inline bool okS(char *s) {return s = gets(s), s && *s;}
 inline int _len(int x) {int cnt = 0; for (; x; ++cnt, x /= 10); return cnt;}
