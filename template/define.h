@@ -143,13 +143,12 @@ const double pi = acos(-1.0);
 //const int knight_dir[8][2] = {1, 2, 1, -2, -1, 2, -1, -2, 2, 1, 2, -1, -2, 1, -2, -1};
 
 // INT_MAX = -1u >> 1
-// 如果用gets(s), GC(ch)读入WA的话，请用SS(s), scanf(" %c ", &ch)代替
+// 如果用gets(s), GC(ch)读入WA的话，请用SS(s), SC(ch)代替
 // 在main()中大量初始化STL类型容易死机
-// 不要出现 val[i] = ++i 这样的行为！
+// 不要出现 val[i] = ++i 这样的未定义的行为！
 // 注意strncpy不会加尾0，请手动添加
 // 相对位置不变的排序stable_sort(a, a + n);
-// C++会帮你往上类型转换，但G++不会
-// advance(it, n); 相当于 For(i, n) ++it;
+// advance(it, n); 相当于 For(i, n) ++it; 但是它是O(1)的
 // size()是ui类型的，应该(int)xx.size()
 
 /*G++扩栈
@@ -183,6 +182,7 @@ typedef multiset<int>::iterator msiter;
 typedef multimap<int, int>::iterator mmter;
 typedef priority_queue<int> pqi;
 typedef priority_queue<int, vector<int>, greater<int> > spqi; // 小的在top
+#define MT(a, b, c) p3(p2(a, b), c)
 //#define x first
 //#define y second
 //p2 operator + (const p2 &a, const p2 &b) {return p2(a.x + b.x, a.y + b.y);}
