@@ -89,7 +89,6 @@ using namespace std;
 #define PA(a, i, n) For(i, (n) - 1) printf("%d ", a[i]); PI(a[(n) - 1]) // *(有时要在前面加花括号)由于要支持STL的数据类型，故不用+的形式，必要时请手动改成+
 #define PAA(a, i, n, j, m) For(i, n) {For(j, (m) - 1) printf("%d ", a[i][j]); PI(a[i][(m) - 1]);}
 #define PAn(a, i, n) For(i, n) PI(a[i])
-#define PiA(a, i, n) For(i, n) PII(i, a[i]) // debug用
 #define rPA(a, i, n) rForr(i, n - 1, 1) printf("%d ", a[i]); PI(a[0]) // *(有时要在前面加花括号)
 #define rPAn(a, i, n) rFor(i, n - 1) PI(a[i])
 #define PC(c) putchar(c)
@@ -191,6 +190,7 @@ typedef priority_queue<int, vector<int>, greater<int> > spqi; // 小的在top
 //const double eps = 1e-8;
 //const ll mod = ll(1e9) + 7; // *或int
 //ll gcd(ll a, ll b){return b ? gcd(b, a % b) : a;}
+//int gcd(int a, int b){return b ? gcd(b, a % b) : a;}
 //inline bool okC(char &c) {return c = getchar(), c != 10 && ~c;} //return (c = getchar()) == 32;
 //inline bool okS(char *s) {return s = gets(s), s && *s;}
 //inline int _len(int x) {int cnt = 0; for (; x; ++cnt, x /= 10); return cnt;}
