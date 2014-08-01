@@ -1,3 +1,7 @@
+/**
+    从左到右挨个使用读头，然后贪心地挨个访问
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long LL;
