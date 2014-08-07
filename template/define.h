@@ -20,7 +20,7 @@ using namespace std;
 #define all(a) a.begin(), a.end()
 #define PB push_back
 #define sq(x) ((x) * (x))
-#define Sqrt(n) (int)sqrt(0.5 + n)
+#define Sqrt(n) (int)round(sqrt((double)n))
 
 // 注意在调用前v一定要开足量的空间
 #define Inter(v, a, n, b, m) v.resize(set_intersection(a, a + (n), b, b + (m), v.begin()) - v.begin())
@@ -179,9 +179,10 @@ typedef set<int>::iterator siter;
 typedef map<int, int>::iterator miter;
 typedef multiset<int>::iterator msiter;
 typedef multimap<int, int>::iterator mmter;
-typedef priority_queue<int> pqi;
-typedef priority_queue<int, vector<int>, greater<int> > spqi; // 小的在top
+typedef priority_queue<int> pq;
+typedef priority_queue<int, vector<int>, greater<int> > spq; // 小的在top
 #define MT(a, b, c) p3(p2(a, b), c)
+//#define MT(a, b, c) p3(a, p2(b, c))
 //#define x first
 //#define y second
 //p2 operator + (const p2 &a, const p2 &b) {return p2(a.x + b.x, a.y + b.y);}
@@ -189,11 +190,15 @@ typedef priority_queue<int, vector<int>, greater<int> > spqi; // 小的在top
 
 //const double eps = 1e-8;
 //const ll mod = ll(1e9) + 7; // *或int
-//ll gcd(ll a, ll b){return b ? gcd(b, a % b) : a;}
-//int gcd(int a, int b){return b ? gcd(b, a % b) : a;}
 //inline bool okC(char &c) {return c = getchar(), c != 10 && ~c;} //return (c = getchar()) == 32;
 //inline bool okS(char *s) {return s = gets(s), s && *s;}
-//inline int _len(int x) {int cnt = 0; for (; x; ++cnt, x /= 10); return cnt;}
+//ll gcd(ll a, ll b){return b ? gcd(b, a % b) : a;}
+//int gcd(int a, int b){return b ? gcd(b, a % b) : a;}
+//ll lcm(ll a, ll b){return a / gcd(a, b) * b;}
+//template<class T> inline T _len(T x) {T cnt = 0; for (; x; ++cnt, x /= 10); return cnt;}
+//template<class T> inline T isSQ(T n) {T tmp = Sqrt(n); return sq(tmp) == n ? tmp : 0;} // 0要特判
+//inline bool isint(double x) {return fabs(x - round(x)) < eps;}
+//inline int sign(double x) {return x < -eps ? -1 : x > eps;}
 //struct comp {bool operator()(const double &a, const double &b)const {return a + eps < b;}};
 #define TT int tttt; scanf("%d%*c", &tttt); while(tttt--) // TT{ ... }
 #define Pcas() printf("Case %d: ", ++cas) // *注意C的大小写，空输出注意去空格
