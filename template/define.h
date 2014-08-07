@@ -196,7 +196,7 @@ typedef priority_queue<int, vector<int>, greater<int> > spq; // 小的在top
 //int gcd(int a, int b){return b ? gcd(b, a % b) : a;}
 //ll lcm(ll a, ll b){return a / gcd(a, b) * b;}
 //template<class T> inline T _len(T x) {T cnt = 0; for (; x; ++cnt, x /= 10); return cnt;}
-//template<class T> inline T isSQ(T n) {T tmp = Sqrt(n); return sq(tmp) == n ? tmp : 0;} // 0要特判
+//template<class T> inline T isSQ(T n) {T tmp = Sqrt(n); return sq(tmp) == n ? tmp : 0;} // 参数应为正数
 //inline bool isint(double x) {return fabs(x - round(x)) < eps;}
 //inline int sign(double x) {return x < -eps ? -1 : x > eps;}
 //struct comp {bool operator()(const double &a, const double &b)const {return a + eps < b;}};
