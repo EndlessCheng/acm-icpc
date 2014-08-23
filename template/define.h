@@ -195,15 +195,8 @@ typedef priority_queue<int, vector<int>, greater<int> > spq; // 小的在top
 //template<class T> inline T Qceil(T x, T y) {return x ? (x - 1) / y + 1 : 0;} // *y必须为正
 //inline bool okC(char &c) {return c = getchar(), c != 10 && ~c;} //return (c = getchar()) == 32;
 //inline bool okS(char *s) {return s = gets(s), s && *s;}
-/*
-template<class T> inline T gcd(T a, T b)
-{
- T c;
- while (b) c = a % b, a = b, b = c;
- return a;
-}
-*/
-//template<class T> inline T lcm(T a, T b){return a / gcd(a, b) * b;}
+//template<class T> inline T gcd(T a, T b) {T c; while (b) c = a % b, a = b, b = c; return a;}
+//template<class T> inline T lcm(T a, T b) {return a / gcd(a, b) * b;}
 //template<class T> inline T _len(T x) {T cnt = 0; for (; x; ++cnt, x /= 10); return cnt;}
 //template<class T> inline T isSQ(T n) {T tmp = Sqrt(n); return sq(tmp) == n ? tmp : 0;} // 参数应为正数
 //inline bool isint(double x) {return fabs(x - round(x)) < eps;}
