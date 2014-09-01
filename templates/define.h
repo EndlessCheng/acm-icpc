@@ -77,6 +77,8 @@ using namespace std;
 #define GC(c) (c = getchar())
 #define Gn() getchar()
 #define UC(c) ungetc(c, stdin)
+//template<typename ... T> void RI(int &head, T &... tail) {scanf("%d", &head), RI(tail ...);}
+//template<typename ... T> void RL(ll &head, T &... tail) {scanf("%lld", &head), RI(tail ...);}
 
 #define PI(a) printf("%d\n", a)
 #define PII(a, b) printf("%d %d\n", a, b)
@@ -151,6 +153,7 @@ const double pi = acos(-1.0);
 // 相对位置不变的排序stable_sort(a, a + n);
 // advance(it, n); 相当于 For(i, n) ++it; 但是它是O(1)的
 // size()是ui类型的，应该(int)xx.size()
+// 截取整数部分 trunc()
 
 /*G++扩栈
 int __size__ = 256 << 20; // 256MB
@@ -165,7 +168,7 @@ __asm__("movl %0, %%esp\n" :: "r"(__p__));
 #define DII(a, b) _set(), printf(#a" = "), cout << (a), printf(", "#b" = "), cout << (b) << endl, _unset()
 #define DIII(a, b, c) _set(), printf(#a" = "), cout << (a), printf(", "#b" = "), cout << (b), printf(", "#c" = "), cout << (c) << endl, _unset()
 #define DIIII(a, b, c, d) _set(), printf(#a" = "), cout << (a), printf(", "#b" = "), cout << (b), printf(", "#c" = "), cout << (c), printf(", "#d" = "), cout << (d) << endl, _unset()
-#define DA(a, n) for(int iiiii = 0; iiiii < n; ++iiiii) printf(#a"[%2d] = ", iiiii), cout << a[iiiii] << endl
+#define DA(a, n) _set(); for(int iiiii = 0; iiiii < n; ++iiiii) printf(#a"[%2d] = ", iiiii), cout << a[iiiii] << endl; _unset()
 #define DAA(a, n, m) for(int iiiii = 0; iiiii < n; ++iiiii) for(int jjjjj = 0; jjjjj < m; ++jjjjj) printf(#a"[%2d][%2d] = ", iiiii, jjjjj), cout << a[iiiii][jjjjj] << endl
 
 // *修改模板参数
@@ -190,17 +193,22 @@ typedef priority_queue<int, vector<int>, greater<int> > spq; // 小的在top
 //p2 operator + (const p2 &a, const p2 &b) {return p2(a.x + b.x, a.y + b.y);}
 //p2 operator += (p2 &a, const p2 &b) {return a = a + b;}
 
-//const double eps = 1e-8;
-//const ll mod = ll(1e9) + 7; // *或int
-//template<class T> inline T Qceil(T x, T y) {return x ? (x - 1) / y + 1 : 0;} // *y必须为正
 //inline bool okC(char &c) {return c = getchar(), c != 10 && ~c;} //return (c = getchar()) == 32;
 //inline bool okS(char *s) {return s = gets(s), s && *s;}
+//const double eps = 1e-8;
+//const ll mod = ll(1e9) + 7; // *或int
+//ll Pow(ll a, ll r) {ll ans = 1LL; for (; r; r >>= 1) {if (r & 1) ans = ans * a % mod; a = a * a % mod;} return ans;}
+//ll mul_mod(ll a, ll b, ll mod) {b %= mod; ll ret = 0; for (; b; b >>= 1) {if (b & 1) ret = (ret + a) % mod; a = (a + a) % mod;} return ret;}
+//ll Pow(ll a, ll r, ll mod) {ll ans = 1LL; for (; r; r >>= 1) {if (r & 1) ans = mul_mod(ans, a, mod); a = mul_mod(a, a, mod);} return ans;}
+//ll powsum(ll a, int r) {ll ans = 1LL, tmp = 1LL; for (; r; r >>= 1) {if (r & 1) ans = (ans * a + tmp) % mod; tmp = tmp * (1LL + a) % mod; a = a * a % mod;} return ans;}
+
+template<class T> inline T Qceil(T x, T y) {return x ? (x - 1) / y + 1 : 0;} // *y必须为正
 //template<class T> inline T gcd(T a, T b) {T c; while (b) c = a % b, a = b, b = c; return a;}
 //template<class T> inline T lcm(T a, T b) {return a / gcd(a, b) * b;}
-//template<class T> inline T _len(T x) {T cnt = 0; for (; x; ++cnt, x /= 10); return cnt;}
+//template<class T> inline T _len(T x) {int cnt = 0;  /* set<int> s; */  for (; x; ++cnt, x /= 10){   /* s.insert(x % 10); */   ;} return cnt; /* return s.size() == cnt;  */ }
 //template<class T> inline T isSQ(T n) {T tmp = Sqrt(n); return sq(tmp) == n ? tmp : 0;} // 参数应为正数
 //inline bool isint(double x) {return fabs(x - round(x)) < eps;}
-//inline int sign(double x) {return x < -eps ? -1 : x > eps;}
+//inline int sign(double x) {return x < -eps ? -1 : x > eps;} // *
 //struct comp {bool operator()(const double &a, const double &b)const {return a + eps < b;}};
 //template<class T> inline T Xor(const T &x, const T &y) {return x ^ y;}
 #define TT int tttt; scanf("%d%*c", &tttt); while(tttt--) // TT{ ... }
