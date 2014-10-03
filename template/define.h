@@ -56,8 +56,8 @@ using namespace __gnu_cxx;
 #define rFor(i, n) for (i = (n); i >= 0; --i)
 #define rForr(i, n, end) for (i = n; i >= (end); --i)
 #define rForrr(i, n, end, step) for (i = n; i >= (end); i -= step)
-#define loop(it, a) for (it = a.begin(); it != a.end(); ++it)
-#define rloop(it, a) for (it = a.rbegin(); it != a.rend(); ++it)
+#define loop(it, a) for (__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)
+#define rloop(it, a) for (__typeof(a.rbegin()) it = a.rbegin(); it != a.rend(); ++it)
 
 #define SI(a) scanf("%d", &a)
 #define SII(a, b) scanf("%d%d", &a, &b)
@@ -184,11 +184,13 @@ typedef long double ld;
 typedef pair<int, int> p2;
 typedef pair<pair<int, int>, int> p3;
 typedef pair<int, pair<int, int> > pi3;
+/*
 typedef vector<int>::iterator viter;
 typedef set<int>::iterator siter;
 typedef map<int, int>::iterator miter;
 typedef multiset<int>::iterator msiter;
 typedef multimap<int, int>::iterator mmter;
+*/
 typedef priority_queue<int> pq;
 typedef priority_queue<int, vector<int>, greater<int> > spq; // 小的在top
 #define MT(a, b, c) p3(p2(a, b), c)
@@ -200,6 +202,7 @@ typedef priority_queue<int, vector<int>, greater<int> > spq; // 小的在top
 
 //inline bool okC(char &c) {return c = getchar(), c != 10 && ~c;} //return (c = getchar()) == 32;
 //inline bool okS(char *s) {return s = gets(s), s && *s;}
+//const double eps = 1e-8;
 
 //const ll mod = ll(1e9) + 7; // *或int
 //ll pow(ll a, ll r) {ll ans = 1LL; for (; r; r >>= 1) {if (r & 1) ans = ans * a % mod; a = a * a % mod;} return ans;} // *使用前特判m==1
@@ -207,7 +210,6 @@ typedef priority_queue<int, vector<int>, greater<int> > spq; // 小的在top
 //ll pow(ll a, ll r, ll mod) {ll ans = 1LL; for (; r; r >>= 1) {if (r & 1) ans = mul_mod(ans, a, mod); a = mul_mod(a, a, mod);} return ans;} // *使用前特判m==1
 //ll powsum(ll a, int r) {ll ans = 1LL, tmp = 1LL; for (; r; r >>= 1) {if (r & 1) ans = (ans * a + tmp) % mod; tmp = tmp * (1LL + a) % mod; a = a * a % mod;} return ans;} // *使用前特判m==1
 
-//const double eps = 1e-8;
 template<class T> inline T Qceil(T x, T y) {return (T)ceil(double(x) / y - 1e-8);}
 //template<class T> inline T Qceil(T x, T y) {return x ? (x - 1) / y + 1 : 0;} // *y必须为正
 //template<class T> inline T gcd(T a, T b) {T c; while (b) c = a % b, a = b, b = c; return a;}
