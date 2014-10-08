@@ -30,3 +30,4 @@ int Kruskal()
 	}
 	return cnt == n - 1 ? sum : -1;
 }
+
