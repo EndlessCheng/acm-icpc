@@ -16,7 +16,7 @@ using namespace std;
 #define random(m) ((rand() << 16 | rand()) % m) // [0,m)之间的伪随机数
 #define randomP(a, n) srand((unsigned)time(NULL)), random_shuffle(a, a + (n))
 #define AS(a) assert(a)
-
+  
 #define all(a) a.begin(), a.end()
 #define PB push_back
 #define sq(x) ((x) * (x))
