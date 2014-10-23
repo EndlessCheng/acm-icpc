@@ -38,6 +38,7 @@ void dfs(int x, int y, int step) {
 		return;
 	}
 }
+
 int main() {
 	while (~scanf("%d%d%d", &n, &m, &start) && n && m && start) {
 		judge = 0;
