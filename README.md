@@ -8,3 +8,5 @@ acm-icpc
 附图：
 
 ![](http://endless.qiniudn.com/study.png)
+
+![](http://endless.qiniudn.com/githubimmersion-study.jpg)
