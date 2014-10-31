@@ -77,6 +77,7 @@ int kruskal()
 	}
 	return ans;
 }
+
 int main()
 {
 	while (~scanf("%d%d", &n, &q))
