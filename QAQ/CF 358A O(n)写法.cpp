@@ -169,15 +169,6 @@ bool ok(int n)
 				m = r, r = a[i];
 			}
 			else if (a[i] > m) return true;
-//			if (m == inf)
-//			{
-//				if (a[i] < r) return true;
-//				r = a[i];
-//			}
-//			else
-//			{
-//				if (a[i] > m) return true;
-//			}
 		}
 		else
 		{
@@ -191,44 +182,6 @@ bool ok(int n)
 	}
 	return false;
 }
-
-//bool ok(int n)
-//{
-//	if (n < 3) return false;
-//	int i, l = min(a[0], a[1]), r = max(a[0], a[1]),m = inf;
-//	bool dir = (a[1] > a[0]);
-//	Forr(i, 2, n)
-//	{
-//		if (dir)
-//		{
-//		    if(a[i-1]==r)
-//            {
-//                r=a[i];
-//            }
-//			else if (a[i] > a[i - 1])
-//			{
-//				if (a[i] > r) return true;
-//				m = a[i];
-//			}
-//			else
-//			{
-//			    if(m!=inf) return true;
-//
-//			}
-//		}
-//		else
-//		{
-//			if (a[i] > a[i - 1])
-//			{
-//				if (a[i] > l) return true;
-//			}
-//			else
-//			{
-//			}
-//		}
-//	}
-//	return false;
-//}
 
 int main()
 {
