@@ -2,8 +2,10 @@
 #include<cstring>
 #include<algorithm>
 #include<queue>
-#define N 25
 using namespace std;
+
+#define N 25
+
 bool hash[N][N][1<<10];
 char map[N][N];
 int n,m,t;
