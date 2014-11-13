@@ -4,9 +4,8 @@
 int a[10001], pos[10001];
 
 int main() {
-	int n, i, sum, l, r;
+	int n, i, sum = 0, l, r;
 	scanf("%d", &n);
-	sum = 0;
 	memset(pos, -1, sizeof(pos));
 	pos[0] = 0;
 	for (i = 1; i <= n; ++i) {
