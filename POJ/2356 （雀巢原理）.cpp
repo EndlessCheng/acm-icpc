@@ -20,7 +20,7 @@ int main() {
 			break;
 		}
 	}
-	printf("%d\n", r - l);
+	printf("%d\n", r - l + 1);
 	for (i = l; i <= r; ++i)
 		printf("%d\n", a[i]);
 	return 0;
