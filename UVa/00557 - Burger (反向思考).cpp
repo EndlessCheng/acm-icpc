@@ -1,4 +1,5 @@
 #include<cstdio>
+
 double f[100005];
 
 void init()
