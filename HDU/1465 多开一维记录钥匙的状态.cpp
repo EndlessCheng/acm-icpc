@@ -31,6 +31,7 @@ struct node{
 };
 int sx,sy,ex,ey;
 int move[4][2]={{0,1},{0,-1},{1,0},{-1,0}};
+
 int bfs(){
     memset(hash,0,sizeof(hash));
     queue<node>Q;
