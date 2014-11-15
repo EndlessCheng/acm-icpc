@@ -20,6 +20,7 @@ char mp[15][15];
 int n,m,k;
 int v[15][15];
 int go[4][2]={{0,1},{1,0},{-1,0},{0,-1}};
+
 int dfs(int x,int y,int j)
 {
 	if(mp[x][y]=='o')
@@ -34,6 +35,7 @@ int dfs(int x,int y,int j)
 	v[x][y]=0;			
 	return 0;
 }
+
 int main()
 {
 	int T,q=0;
