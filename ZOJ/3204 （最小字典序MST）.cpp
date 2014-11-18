@@ -10,7 +10,6 @@ using namespace std;
 #define yn yyyyyyyyy
 #define arg aaaaaaa
 
-
 #define Fin(f) freopen(f, "r", stdin)
 #define Fout(f) freopen(f, "w", stdout)
 #define SR() srand((unsigned)time(NULL))
