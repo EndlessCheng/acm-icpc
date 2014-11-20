@@ -1,4 +1,5 @@
 #include <cstdio>
+
 const int MAX_N = 1e6 + 10;
 
 int t[MAX_N];
