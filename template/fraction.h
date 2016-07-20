@@ -74,7 +74,7 @@ struct frac
 	}
 	frac operator -= (const frac &b)
 	{
-		return*this = *this - b;
+		return *this = *this - b;
 	}
 	frac operator *= (const frac &b)
 	{
